@@ -1,0 +1,256 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 80px;
+    padding-bottom: 20px;
+}
+
+.prompt-box {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.response-box {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.prompt, .response {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#messages-list {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rounded-corners {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.textarea-with-submit-inside {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-start;
+    z-index: 1000;
+}
+
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    height: auto;
+    max-height: 300px;
+    width: 100%;
+    flex-grow: 1;
+}
+
+textarea:focus {
+    max-height: 300px;
+    box-shadow: 0 0 0 8px rgba(35, 167, 195, 0.3);
+}
+
+.submit-within-textarea {
+    background-color: mediumseagreen;
+    color: #fff;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+}
+
+#threads-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+}
+
+#threads-modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#close-threads-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+#close-threads-btn:hover,
+#close-threads-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#threads-list {
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.thread-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.thread-item:hover {
+    background-color: #f0f0f0;
+}
+
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+#show-threads-btn {
+  font-size: 20px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#thread-controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  gap: 10px;
+}
+
+.thread-control-btn {
+  font-size: 24px;
+  background-color: mediumseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#new-thread-btn {
+  font-size: 24px;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.center-container #new-thread-btn {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: mediumseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto;
+  height: auto;
+}
+
+.center-container #new-thread-btn:hover {
+  background-color: seagreen;
+}
+
+#thread-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+ .response-text {
+  line-height: 1.6;
+}
+
+.response-text h1, .response-text h2, .response-text h3, .response-text h4, .response-text h5, .response-text h6 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.response-text p {
+  margin-bottom: 1em;
+}
+
+.response-text ul, .response-text ol {
+  margin-bottom: 1em;
+  padding-left: 2em;
+}
+
+.response-text code {
+  background-color: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+.response-text pre {
+  background-color: #f4f4f4;
+  padding: 1em;
+  overflow-x: auto;
+}
