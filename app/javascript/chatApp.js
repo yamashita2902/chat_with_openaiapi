@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollToBottom();
   }
 
-  // フォームの入力に以上がないか確かめる関数。
+  // フォームの入力異常がないか確かめる関数。
   // 空白文字以外が含まれていない場合はfalseを返す。
   function isValidInput(input) {
     return /\S/.test(input);
