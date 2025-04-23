@@ -1,0 +1,48 @@
+<% if @chat_thread %>
+<h1 id="thread-title"><%= @chat_thread.title %></h1>
+  <div id="thread-controls">
+    <button id="new-thread-btn" class="thread-control-btn">+</button>
+    <button id="show-threads-btn" class="thread-control-btn">❏</button>
+  </div>
+
+  <div id="chat-container">
+    <div id="messages-list">
+       <% if @chat_thread.messages.present? %>
+        <% @chat_thread.messages.each do |message| %>
+          <% if message.prompt.present? && message.response.present? %>
+            <div class="prompt-box">
+              <p class="prompt">You:</p>
+              <p class="prompt-text"><%= message.prompt %></p>
+            </div>
+            <div class="response-box">
+              <p class="response">GPT:</p>
+              <p class="response-text" data-markdown><%= message.response %></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_with(model: [@chat_thread, @message], id: 'generation-form', remote: true) do |form| %>
+    <div class="textarea-with-submit-inside">
+      <%= form.text_area :prompt, class: "rounded-corners" %>
+      <%= form.submit '↑', class: "submit-within-textarea rounded-corners" %>
+    </div>
+  <% end %>
+<% else %>
+  <div id="thread-controls">
+    <button id="show-threads-btn" class="thread-control-btn">❏</button>
+  </div>
+  <div class="center-container">
+    <button id="new-thread-btn">Start New Chat ▶</button>
+  </div>
+<% end %>
+
+<div id="threads-modal">
+  <div id="threads-modal-content">
+    <button id="close-threads-btn">&times;</button>
+    <h2 class="modal-title">スレッド一覧</h2>
+    <div id="threads-list"></div>
+  </div>
+</div>
